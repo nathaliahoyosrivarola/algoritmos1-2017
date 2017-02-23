@@ -1,0 +1,39 @@
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+
+using namespace std;
+
+void main()
+{
+	int np,p1,p2,ef,faltas,numeroestudiantes,i=0;
+	float notafinal;
+	cout<<"ingrese el numero de estudiantes:  ";
+	cin>>numeroestudiantes;
+	while(i<numeroestudiantes)
+	{
+		cout<<"ingrese la nota del primer parcial:    "  ;
+		cin>>p1;
+		cout<<"ingrese la nota del segundo parcial:     ";
+		cin>>p2;
+		cout<<"ingrese la nota practica:   ";
+		cin>>np;
+		cout<<"ingrese el numero de faltas:  ";
+		cin>>faltas;
+		if (faltas>10)
+		ef=0;
+		else
+		{
+			cout<<"ingrese la nota del examen final:  ";
+			cin>>ef;
+		}
+		notafinal=((p1+p2)/2)*0.4+np*0.2+ef*0.4;
+		if (notafinal>=51)
+		cout<<"el estudiante ha aprobado la materia con: "<<notafinal<<" puntos.";
+		else
+		cout<<"el estudiante no ha aprobado la materia con: "<<notafinal<<" puntos.";
+		cout<<endl;
+		i++;
+	}
+	getch();
+}

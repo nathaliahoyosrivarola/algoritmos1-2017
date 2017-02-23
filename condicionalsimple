@@ -11,5 +11,7 @@ void main()
 	cin>>edad;
 	if(edad>=18)
 		cout<<"El ciudadano puede votar."<<endl;
+	if(edad<18)
+		cout<<"El ciudadano no puede votar."<<endl;
 	getch();
 }

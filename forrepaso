@@ -1,0 +1,27 @@
+// salarioneto.cpp : main project file.
+
+#include "stdafx.h"
+#include<iostream>
+#include "conio.h"
+
+using namespace std;
+
+void main()
+{
+	int numerotrabajadores,i;
+	float salarioneto,salariobruto;
+	cout<<"Por favor, ingrese el numero de empleados:  ";
+	cin>>numerotrabajadores;
+	for(i=0; i<numerotrabajadores; i++)
+	{
+		cout<<"ingrese el salario del trabajador:  ";
+		cin>>salariobruto;
+		if(salariobruto>=7000)
+			salarioneto=salariobruto-(0.13+0.1271)*salariobruto;
+		else
+			salarioneto=salariobruto-0.1271*salariobruto;
+		cout<<"El salario neto del trabajador que introdujo es:  "<<salarioneto<<endl;
+	}
+
+	getch();
+}

@@ -1,0 +1,31 @@
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+
+using namespace std;
+
+void main()
+{
+    int personas,mayor,menor,opcion;
+    cout<<" ESTE PROGRAMA ES PARA SABER CUANTOS MAYORES DE EDAD HAY EN LA CLASE!";
+    cout<<" CUANTAS PERSONAS HAY EN LA CLASE?: ";
+    cin>>personas;
+    mayor=0;
+    menor=0;
+    do
+    {
+        cout<<"UD TIENE MAS DE 18 ANHOS? PRESIONE 1 (SI) O 2 (NO)";
+        cin>>opcion;
+        if(opcion==1)
+            mayor=mayor+1;
+        else
+            menor=menor+1;
+        personas=personas-1;
+    }while (personas>0);
+
+    cout<<"LOS RESULTADOS SON: "<<endl;
+    cout<<"LOS MAYORES DE EDAD EN ESTA SALA SON: "<<mayor<<endl;
+    cout<<"LOS MENORES DE EDAD EN ESTA SALA SON: "<<menor<<endl;
+    cout<<"GRACIAS POR USAR ESTE PROGRAMA";
+getch();
+}

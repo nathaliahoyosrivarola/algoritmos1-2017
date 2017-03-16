@@ -1,0 +1,59 @@
+#include "stdafx.h"
+#include <iostream>
+#include"conio.h"
+#include "math.h"
+
+using namespace std;
+
+float discriminante(float a, float b,float c);
+void soluciones (float a, float b, float c,float &x1, float &x2);
+
+void main()
+{
+	float a,b,c,dis,d;
+	float x1,x2,r,z;
+	cout<<"ingrese a: ";
+	cin>>a;
+	cout<<"ingrese b: ";
+	cin>>b;
+	cout<<"ingrese c: ";
+	cin>>c;
+	dis=discriminante(a,b,c);
+	if(dis>0)
+	{
+		cout<<"la ecuacion posee soluciones reales y diferentes."<<endl;		
+		soluciones(a,b,c,x1,x2);
+		cout<<"x1= "<<x1<<endl;
+		cout<<"x2= "<<x2<<endl;
+	}
+	else
+	{
+		if(dis==0)
+		{
+			x1=(-b)/(2*a);
+			cout<<"la ecuacion posee soluciones unicas."<<endl;
+			cout<<"x="<<x1<<endl;
+		}
+		else
+		{
+			cout<<"la ecuacion posee soluciones imaginarias."<<endl;			
+			d=dis*(-1);
+			r=sqrt(d)/(2*a);
+			z=(-b)/(2*a);
+			cout<<"x1="<<z<<"+"<<r<<"i"<<endl;
+			cout<<"x2="<<z<<"-"<<r<<"i"<<endl;
+		}
+	}
+	getch();
+}
+float discriminante(float a, float b,float c)
+{
+	float d;
+	d=b*b-4*a*c;
+	return d;
+}
+void soluciones (float a, float b, float c,float &x1, float &x2)
+{
+	x1=((-b)+sqrt(discriminante(a,b,c)))/(2*a);
+	x2=((-b)-sqrt(discriminante(a,b,c)))/(2*a);
+}

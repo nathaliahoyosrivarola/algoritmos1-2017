@@ -1,0 +1,72 @@
+// arrays paralelos.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include <string>
+#include "conio.h"
+
+#define MAX 100
+//no se puede utilizar la misma funcion para enteros que para string
+using namespace std;
+void cargarvectori( int notas[], int n);
+void cargarvectors(string alumnos[], int n);
+void burbuja (int notas[], string alumnos[],int n);
+void mostrarvectores (int notas[], string alumnos[], int n);
+
+void main()
+{
+	int n, notas[MAX];
+	string alumnos [MAX];//arreglo de strings
+	do{
+		cout<<"ingrese el tamaño del vector: ";
+		cin>>n;
+	}while((n<=0)||(n>MAX));
+	cargarvectors(alumnos,n);
+	cargarvectori(notas,n);
+	burbuja(notas,alumnos,n);
+
+}
+
+void cargarvectori( int notas[], int n)
+{
+	for(int i=0;i<n;i++)
+	{
+		cout<<"notas["<<i<<"]=";
+		cin>>notas[i];
+	}
+}
+void cargarvectors(string alumnos[], int n)
+{
+	cin.ignore();//antes hay un cin que tiene caracter basura
+	for(int i=0;i<n;i++)
+	{
+		cout<<"alumnos[ "<<i<<"]=";
+		getline(cin,alumnos[i]);
+	}
+}
+void burbuja (int notas[], string alumnos[],int n)
+{
+	//descendente de mayor a menor
+	int notasaux;
+	string alumnosaux;
+	for(int i=0;i<n-1;i++)
+		for(int j=i+1;j<n;j++)
+			if(notas[i]<notas[j])
+			{
+				notasaux=notas[j];
+				notas[j]=notas[i];
+				notas[i]=notasaux;
+				//array paralelo
+				alumnosaux=notas[j];
+				alumnos[j]=alumnos[i];
+				alumnos[i]=alumnosaux;
+
+			}
+	
+}
+void mostrarvectores (int notas[], string alumnos[], int n)
+{
+	for(int i=0;i<n;i++)
+		cout<<alumnos[i]<<"\t"<<notas[i]<<endl;
+}

@@ -1,0 +1,180 @@
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include <string>
+
+using namespace std;
+void leer(string nombre);
+int longitudstring(string nombre);
+int numerodevocalesnormal(string nombre, int longitud);
+int numerodevocalesconat(string nombre, int longitud);
+void main()
+{
+	int longitud,cont,pos,opcion,num;
+	char aux;
+	
+	string var1, var2, nombre; //Declarar strings
+	do{
+		cout<<endl;
+		cout<<"---------------MENU DE METODOS DE STRING---------------"<<endl;
+		cout<<"1.LEER DATOS."<<endl;
+		cout<<"2.LONGITUD DE UN STRING."<<endl;
+		cout<<"3.COMPARACION DE PALABRAS."<<endl;
+		cout<<"4.ENCONTRAR VOCALES"<<endl;
+		cout<<"5.ENCONTRAR VOCALES CON AT"<<endl;
+		cout<<"6.SACAR PARTE DE UN STRING"<<endl;
+		cout<<"7.INTERCAMBIO DE STRING"<<endl;
+		cout<<"8.ENCONTRAR CARACTERES EN UN STRING"<<endl;
+		cout<<"9.INVERTIR UNA FRASE"<<endl;
+		cout<<"10.QUITAR LAS VOCALES DE UN STRING"<<endl;
+		cout<<"0.SALIR"<<endl;
+		cin>>opcion;
+		switch(opcion)
+		{
+		case 1:
+			{
+				cout<<endl;
+				leer(nombre);
+				break;
+			}
+		case 2:
+			{
+				cout<<"USO DE LENGHT"<<endl;
+				leer(nombre);
+				longitud=longitudstring(nombre);
+				cout<<"EL STRING TIENE : "<<longitud<<"  caracteres";
+				break;
+			}
+
+		case 3:
+			{
+				leer(nombre);
+				leer(var2);
+				if (nombre.compare(var2) == 0 )
+					cout<<"Los datos coinciden"<<endl;
+				else 
+					cout << nombre << " es diferente que "<<var2 << " :1"<<endl;
+				break;
+			}
+		case 4:
+			{
+			    cout<<endl<<"Ejemplo de uso de elementos individuales: "<<endl;
+				cout<<endl<<"Contar vocales"<<endl;
+				leer(nombre);
+				longitud=longitudstring(nombre);
+				num=numerodevocalesnormal(nombre,longitud);
+				cout<<"EL NUMERO DE VOCALES ES : "<<num;
+				break;
+			}
+		case 5:
+			{
+				cout<<"Ejemplo de uso de elementos individuales con at: "<<endl;
+				leer(nombre);
+				longitud=longitudstring(nombre);
+				num=numerodevocalesconat(nombre,longitud);
+				cout<<"EL NUMERO DE VOCALES ES : "<<num;
+				break;
+			}
+		case 6:
+			{
+				cout<<"ejemplo de sacar parte de un string";
+				cout<<endl<<"Ejemplo de uso de substr"<<endl;
+				leer(nombre);
+				longitud=longitudstring(nombre);
+				cout<<endl<<"Ingrese desde donde desea extraer el sbstring: ";
+				cin>>pos;
+				cout <<nombre.substr(pos,longitud-pos);
+				
+				break;
+			}
+		case 7:
+			{
+				cout<<"EJEMPLO DE SWAP"<<endl;
+				cout<<endl <<"Intercambia variables";
+				leer(nombre);
+				nombre.swap(var2);
+				cout << nombre;
+				cout << var2;
+				break;
+			}
+		case 8:
+			{
+				cout<<"ejemplo de encontrar caracteres en un string"<<endl;
+				leer(var2);
+				cout << var2.find(' ');
+				longitud=var2.length();
+				for (int i=0;i<longitud;i++)
+					if (var2.at(i)==' ' )
+						cout << endl<<"Existe un espacio en: "<<i;
+			}
+		case 9:
+			{
+				leer(nombre);
+				var2=nombre;
+				longitud=longitudstring(nombre);
+				for (int i=0;i<longitud/2;i++)
+				{
+					aux=nombre[i];
+					nombre[i]=nombre[longitud-1-i];
+					nombre[longitud-1-i]=aux;
+				}
+				cout <<"La cadena invertida es: "<< nombre<<endl;
+				if (var2.compare(nombre)==0)
+					cout<<"Es un palindromo";
+				break;
+			}
+		case 10:
+			{
+				leer(nombre);
+				var2=nombre;
+				longitud=longitudstring(nombre);
+				cont=0;
+				for (int i=0;i<longitud;i++)
+					if (nombre[i]!='a' && nombre[i]!='e'&& nombre[i]!='i'&& nombre[i]!='o'&& nombre[i]!='u')
+					{
+						var2[cont]=nombre[i];
+						cont++;
+					}
+				cout<<"Sin vocales es: "<<var2;
+				break;
+			}
+		case 0:
+				break;
+		default:
+			{
+				cout<<"opcion invalida";
+				break;
+			}
+		cout<<endl;
+		}
+	}while(opcion!=0);
+	getch();
+}
+void leer(string nombre)
+{
+	cin.ignore();
+	cout<<"Ingrese un nombre: ";
+	getline(cin,nombre);
+}
+int longitudstring(string nombre)
+{
+	int longitud;
+	longitud=nombre.length();
+	return longitud;
+}
+int numerodevocalesnormal(string nombre, int longitud)
+{
+	int numero=0;
+	for (int i=0;i<longitud;i++)
+		if (nombre[i]=='a' || nombre[i]=='e'||nombre[i]=='i'||nombre[i]=='o'||nombre[i]=='u')
+			numero++;
+	return numero;
+}
+int numerodevocalesconat(string nombre, int longitud)
+{
+	int cont=0;
+	for (int i=0;i<longitud;i++)
+		if (nombre.at(i)=='a' || nombre.at(i)=='e'||nombre.at(i)=='i'||nombre.at(i)=='o'||nombre.at(i)=='u')
+			cont++;
+	return cont;
+}

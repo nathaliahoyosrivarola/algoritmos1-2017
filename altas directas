@@ -1,0 +1,70 @@
+// altas directas.cpp : Defines the entry point for the console application.
+//
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include"stdio.h"
+#include "stdlib.h"
+#include <string>
+
+using namespace std;
+
+void ALTA_DIRECTA(void);
+
+struct tipo_registro
+{
+	int no_prod;
+	string descripcion;
+	int cantidad;
+	float precio;
+	char garantia;
+};
+tipo_registro Registro;
+FILE *alias;
+void main()
+{
+	void ALTA_DIRECTA();
+	getch();
+}
+
+void ALTA_DIRECTA(void)
+{
+ int no_prod; // Variable local para el numero de producto
+ cout << "\n\rALTAS DE REGISTROS DE PRODUCTOS";
+ alias=fopen("PRODUCTO.DIR","rb+"); // Intenta abrir el archivoPRODUCTO.DIR
+ // en modo de lectura/escritura
+ if(alias==NULL)
+ alias=fopen("PRODUCTO.DIR","wb"); // Crea el archivo en caso de noexistir
+ cout << "\n\n\n\rNumero de producto: "; 
+ cin >> no_prod;
+ int dir_fisica=no_prod*sizeof(Registro); // Calculo de la dir. fisica
+ fseek(alias,dir_fisica,SEEK_SET); //Posicionar el apuntador del archivo
+ fread(&Registro,sizeof(Registro),1,alias);// Lee el "Registro", de tamano=sizeof(Registro) del archivo "alias"
+ if(Registro.no_prod==no_prod)
+ {
+ cout << "\n\n\n\rRegistro duplicado !!!";
+ fclose(alias);
+ getch();
+ return;
+ }
+ cout << "\n\rDescripcion: "; 
+ cin.ignore();
+ getline(cin,Registro.descripcion);
+ cout << "\n\rCantidad : "; 
+ cin >> Registro.cantidad;
+ cout << "\n\rPrecio : "; 
+ cin >> Registro.precio;
+ do
+ {
+ cout << "\n\rGarantia : "; 
+ Registro.garantia=toupper(getche());
+ }while(Registro.garantia!='S' && Registro.garantia!='N');
+ Registro.no_prod=no_prod;
+ fseek(alias,dir_fisica,SEEK_SET); //Posicionar el apuntador del archivo
+ fwrite(&Registro,sizeof(Registro),1,alias); // Grabar el Registro completo
+ fclose(alias); // Cierra el archivo
+ cout << "\n\n\n\rProducto registrado !!!";
+ cout << "\n\r<<< Oprima cualquier tecla para continuar >>>";
+ getch(); 
+  return;
+}

@@ -1,0 +1,185 @@
+// ProyectoEnergiaEolica.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <conio.h>
+#include <stdio.h>
+#include <iostream>
+#include <string>
+using namespace std;
+
+//nivel: 1->Admin, 2->Molino, 3-> Empresa
+struct Usuario
+{
+	int id;
+	string nombre;
+	string contrasenha;
+	int estado;
+};
+
+struct Empresa
+{
+	int id;
+	string nombre;
+	string contrasenha;
+	int estado;
+};
+
+void MenuVentas();
+void MenuMolinos();
+void MenuEmpresas();
+void MenuInicio();
+
+Usuario usuario;
+
+void main()
+{
+	Usuario usr;
+	int opcion = -1;
+	do
+	{
+		cout<<"1. Iniciar sesion"<<endl;
+		cout<<"2. Nuevo usuario"<<endl;
+		cout<<"0. Salir"<<endl;
+		cout<<"Ingrese la opcion escogida: ";
+		cin>>opcion;
+
+		switch(opcion)
+		{
+		case 1:
+			//IngresarUsuario(usr);
+			if(usr.nombre == "adm" && usr.contrasenha=="adm123")
+			{
+				usuario = usr;
+			}
+			MenuInicio();
+			break;
+		case 2:
+			//NuevoUsuario();
+			break;
+		default:
+			break;
+		}
+	}while(opcion != 0);
+      getch();
+}
+
+
+
+void MenuVentas()
+{
+	int opcion = -1;
+	do
+	{
+		cout<<"-----------Ventas------------"<<endl;
+		cout<<"1. Adicionar"<<endl;
+		cout<<"2. Listar"<<endl;
+		cout<<"3. Modificar"<<endl;
+		cout<<"4. Eliminar"<<endl;
+		cout<<"0. Salir"<<endl;
+		cout<<"Ingrese la opcion escogida:";
+		cin>>opcion;
+
+		switch(opcion)
+		{
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
+			break;
+		default:
+			break;
+		}
+	}while(opcion != 0);
+}
+void MenuMolinos()
+{
+	int opcion = -1;
+	do
+	{
+		cout<<"---------Molinos afiliados-------------"<<endl;
+		cout<<"1. Adicionar"<<endl;
+		cout<<"2. Listar"<<endl;
+		cout<<"3. Modificar"<<endl;
+		cout<<"4. Eliminar"<<endl;
+		cout<<"0. Salir"<<endl;
+		cout<<"Ingrese la opcion escogida:";
+		cin>>opcion;
+		switch(opcion)
+		{
+
+		     case 1:
+			      break;
+		     case 2:
+			      break;
+		     case 3:
+			      break;
+		     case 4:
+			      break;
+		     default:
+			      break;
+
+		}
+	}while(opcion != 0);
+}
+void MenuEmpresas()
+{
+	int opcion = -1;
+	do
+	{
+		cout<<"---------Empresas-------------"<<endl;
+		cout<<"1. Adicionar"<<endl;
+		cout<<"2. Listar"<<endl;
+		cout<<"3. Modificar"<<endl;
+		cout<<"4. Eliminar"<<endl;
+		cout<<"0. Salir"<<endl;
+		cout<<"Ingrese la opcion escogida:";
+		cin>>opcion;
+
+		switch(opcion)
+		{
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
+			break;
+		default:
+			break;
+		}
+	}while(opcion != 0);
+}
+void MenuInicio()
+{
+	int opcion = -1;
+	do
+	{
+		cout<<"1. Ventas"<<endl;
+		cout<<"2. Molinos Afiliados"<<endl;
+		cout<<"3. Empresas"<<endl;
+		cout<<"4. Ver Ganancias"<<endl;
+		cout<<"0. Salir"<<endl;
+		cout<<"opcion escogida:";
+		cin>>opcion;
+
+		switch(opcion)
+		{
+		case 1:
+			MenuVentas();
+			break;
+		case 2:
+			MenuMolinos();
+			break;
+		case 3:
+			MenuEmpresas();
+			break;
+		default:
+			break;
+		}
+	}while(opcion != 0);
+}
